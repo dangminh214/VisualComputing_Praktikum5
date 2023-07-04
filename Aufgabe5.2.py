@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 def plotHistogram(image, cumulative=False):
-    hist = cv2.calcHist([image], [0], None, [256], [0, 256])
+    hist = cv2.calcHist([image], [0], None, [255], [0, 255])
     if cumulative:
         hist = hist.cumsum()
     hist /= hist.sum()
@@ -14,7 +14,7 @@ def plotHistogram(image, cumulative=False):
 
 def histogram_equalization(image):
     # Step 1: Compute histogram
-    hist, bins = np.histogram(image.flatten(), 256, [0, 256])
+    hist, bins = np.histogram(image.flatten(), 255, [0, 255])
 
     # Step 2: Compute cumulative histogram
     cumulative_hist = hist.cumsum()

@@ -32,7 +32,12 @@ f6 = f4 - f5
 result1 = cv2.filter2D(image, -1, f1, delta=128)
 result2 = cv2.filter2D(result1, -1, f2, delta=128)
 result3 = cv2.filter2D(image.copy(), -1, f3, delta=128)
-result4 = cv2.filter2D(image.copy(), -1, f4, delta=128)
+result4 = cv2.filter2D(image.copy(), -1, f4, delta=0)
+
+result1 = cv2.resize(result1, (600,400), interpolation = cv2.INTER_NEAREST)
+result2= cv2.resize(result2, (600,400), interpolation = cv2.INTER_NEAREST)
+result3 = cv2.resize(result3, (600,400), interpolation = cv2.INTER_NEAREST)
+result4 = cv2.resize(result4, (600,400), interpolation = cv2.INTER_NEAREST)
 
 # Anzeigen der Ergebnisse
 cv2.imshow('Faltung mit F1', result1)
@@ -40,10 +45,14 @@ cv2.imshow('Faltung mit F2', result2)
 cv2.imshow('Faltung mit F3', result3)
 cv2.imshow('Faltung mit F4', result4)
 
-result_f5 = cv2.filter2D(image.copy(), -1, f5, delta=128)
+result_f5 = cv2.filter2D(image.copy(), -1, f5, delta=0)
 
 # Durchführen der Faltung mit F4 und Subtraktion von F5
 result_f6 = cv2.filter2D(image.copy(), -1, f6, delta=128)
+
+result_f5 =  cv2.resize(result_f5, (600,400), interpolation = cv2.INTER_NEAREST)
+result_f6 =  cv2.resize(result_f6, (600,400), interpolation = cv2.INTER_NEAREST)
+
 
 # Anzeigen der Ergebnisse
 cv2.imshow('Faltung mit F5', result_f5)
